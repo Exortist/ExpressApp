@@ -1,0 +1,14 @@
+nav
+    .nav-wrapper
+        a.brand-logo(href="/") Приложение кусов
+        ul#nav-mobile.right.hide-on-med-and-down
+            li(class='list__class ' + (isHome ? ' active ' : ''))
+                a(href="/") Главная
+            li(class='list__class ' + (isCourses ? ' active ' : ''))
+                a(href="/courses") Курсы
+            li(class='list__class ' + (isAdd ? ' active ' : ''))
+                a(href="/add") Добавить курс
+            li(class='list__class ' + (isCard ? ' active ' : ''))
+                a(href="/card") Корзина
+            li(class='list__class ' + (isOrders ? ' active ' : ''))
+                a(href="/orders") Заказы

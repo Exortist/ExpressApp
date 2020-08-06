@@ -1,0 +1,24 @@
+extends layouts/main
+block header
+    include partials/header
+
+block content
+    h1 Добавить новый курс
+
+    form(action="/add" method='POST')
+        .input-field
+            input#title.validate(type="text" name='title' required)
+            label(for="title") Название курса
+            span.helper-text(data-error="Введите название" )
+        .input-field
+            input#price.validate(type="number" name='price' min="1" required)
+            label(for="price") Цена курса
+            span.helper-text(data-error="Введите цену" )
+        .input-field
+            input#img.validate(type="text" name='img' required)
+            label(for="img") URL Картинки
+            span.helper-text(data-error="Введите URL картинки")
+        button.btn.btn-primary Добавить курс
+
+block footer
+    include partials/footer

@@ -1,0 +1,13 @@
+extends layouts/main
+block header
+
+block content
+    .course
+        h1!= title
+
+        img(src=img alt=title)
+
+        p.price.big=price
+
+block footer
+    include partials/footer

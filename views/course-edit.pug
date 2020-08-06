@@ -1,0 +1,28 @@
+extends layouts/main
+block header
+    include partials/header
+
+block content
+    h1 Редактировать курс #{course.title}
+
+    form.course-form(action="/courses/edit" method='POST')
+        .input-field
+            input#title.validate(type="text" name='title' required value=course.title)
+            label(for="title") Название курса
+            span.helper-text(data-error="Введите название" )
+        .input-field
+            input#price.validate(type="number" name='price' min="1" required value=course.price)
+            label(for="price") Цена курса
+            span.helper-text(data-error="Введите цену" )
+        .input-field
+            input#img.validate(type="text" name='img' required value=course.img)
+            label(for="img") URL Картинки
+            span.helper-text(data-error="Введите URL картинки")
+        input(type="hidden" name="id" value=course.id)
+        button.btn.btn-primary(type="submit") Редактировать курс
+    form(action="/courses/remove" method="POST")
+        input(type="hidden" name="id" value=course.id)
+        button.btn.red Удалить курс
+
+block footer
+    include partials/footer

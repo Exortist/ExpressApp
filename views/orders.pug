@@ -1,0 +1,27 @@
+extends layouts/main
+
+block header
+    include partials/navbar
+
+block content
+    h1 Мои заказы
+    if orders.length
+        each order in orders
+            .row: .col.s6.offset-s3: .card
+                .card-content
+                    span.card-title Заказ #[small!= order._id]
+                    p.date!= order.date
+                    p #[em #{order.user.userId.name}] (#{order.user.userId.email})
+                    ol
+                        each course in order.courses
+                            li!= course.course.title
+                                |  (x #[strong #{course.count}])
+
+                    hr
+                    p Цена:
+                        span.price!= order.price
+    else
+        h2 Заказов нет
+
+block footer
+    include partials/footer
