@@ -8,6 +8,7 @@ const addRoutes = require('./routes/add')
 const coursesRoutes = require('./routes/course')
 const cardRoutes = require('./routes/card')
 const ordersRoutes = require('./routes/orders')
+const authRoutes = require('./routes/auth')
 const User = require('./models/user')
 
 const url = `mongodb+srv://Exortist:5553535@cluster0.od6od.mongodb.net/shop`
@@ -35,6 +36,7 @@ app.use('/add',addRoutes)
 app.use('/courses',coursesRoutes)
 app.use('/card',cardRoutes)
 app.use('/orders',ordersRoutes)
+app.use('/auth',authRoutes)
 
 
 
