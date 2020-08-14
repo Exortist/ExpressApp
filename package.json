@@ -11,9 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-mongodb-session": "^2.4.0",
     "express": "^4.17.1",
-    "pug": "^3.0.0",
+    "express-session": "^1.17.1",
     "mongoose": "^5.9.27",
+    "pug": "^3.0.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {

@@ -13,11 +13,11 @@ block content
 
             #login.col.s6.offset-s3
                 h1 Войти в магазин
-                form(action="/add" method='POST')
+                form(action="/auth/login" method='POST')
                     .input-field
                         input#email.validate(type="email" name='email' required)
-                        label(for="email") Название курса
-                        span.helper-text(data-error="Введите название" )
+                        label(for="email") Email
+                        span.helper-text(data-error="Введите email" )
                     .input-field
                         input#password.validate(type="password" name='password' required)
                         label(for="password") Пароль
@@ -25,10 +25,10 @@ block content
                     button.btn.btn-primary(type="submit") Войти
             #register.col.s6.offset-s3
                 h1 Создать аккаунт
-                form(action="/add" method='POST')
+                form(action="/auth/register" method='POST')
                     .input-field
                             input#remail.validate(type="email" name='email' required)
-                            label(for="remail") Название курса
+                            label(for="remail") Email
                             span.helper-text(data-error="Введите название" )
                     .input-field
                         input#rpassword.validate(type="password" name='rpassword' required)

@@ -19,10 +19,11 @@ block content
                             p.price!=course.price
                         .card-action.actions
                             a(href=`/courses/${course.id}` target="_blank") Открыть курс
-                            a(href=`/courses/${course.id}/edit?allow=true` target="_blank") Редактировать
-                            form(action='/card/add' method='POST')
-                                input(type="hidden" name='id' value=course.id)
-                                button.btn.btn-primary(type="submit") Купить
+                            if isAuth
+                                a(href=`/courses/${course.id}/edit?allow=true` target="_blank") Редактировать
+                                form(action='/card/add' method='POST')
+                                    input(type="hidden" name='id' value=course.id)
+                                    button.btn.btn-primary(type="submit") Купить
 
         else
             p Курсов нет
