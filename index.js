@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
 const varMiddleware = require('./middleware/variables')
+const userMiddleware = require('./middleware/user')
 
 
 const homeRoutes = require('./routes/home')
@@ -36,6 +37,7 @@ app.use(session({
     store
 }))
 app.use(varMiddleware)
+app.use(userMiddleware)
 
 app.use('/', homeRoutes)
 app.use('/add', addRoutes)
