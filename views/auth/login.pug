@@ -31,7 +31,11 @@ block content
                             label(for="remail") Email
                             span.helper-text(data-error="Введите название" )
                     .input-field
-                        input#rpassword.validate(type="password" name='rpassword' required)
+                            input#name.validate(type="text" name='name' required)
+                            label(for="name") Ваше Имя
+                            span.helper-text(data-error="Введите Имя" )
+                    .input-field
+                        input#rpassword.validate(type="password" name='password' required)
                         label(for="rpassword") Пароль
                         span.helper-text(data-error="Введите пароль" )
                     .input-field
