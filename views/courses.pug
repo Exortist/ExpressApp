@@ -21,6 +21,7 @@ block content
                                 a(href=`/courses/${course.id}/edit?allow=true` target="_blank") Редактировать
                                 form(action='/card/add' method='POST')
                                     input(type="hidden" name='id' value=course.id)
+                                    input(type="hidden" name="_csrf" value=csrf)
                                     button.btn.btn-primary(type="submit") Купить
 
         else

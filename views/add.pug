@@ -18,6 +18,7 @@ block content
             input#img.validate(type="text" name='img' required)
             label(for="img") URL Картинки
             span.helper-text(data-error="Введите URL картинки")
+        input(type="hidden" name="_csrf" value=csrf)
         button.btn.btn-primary Добавить курс
 
 block footer

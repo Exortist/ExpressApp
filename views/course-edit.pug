@@ -19,9 +19,11 @@ block content
             label(for="img") URL Картинки
             span.helper-text(data-error="Введите URL картинки")
         input(type="hidden" name="id" value=course.id)
+        input(type="hidden" name="_csrf" value=csrf)
         button.btn.btn-primary(type="submit") Редактировать курс
     form(action="/courses/remove" method="POST")
         input(type="hidden" name="id" value=course.id)
+        input(type="hidden" name="_csrf" value=csrf)
         button.btn.red Удалить курс
 
 block footer

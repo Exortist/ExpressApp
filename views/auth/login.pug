@@ -12,6 +12,8 @@ block content
                     a.active(href="#register") Регистрация
 
             #login.col.s6.offset-s3
+                if loginError
+                    p.alert!= loginError
                 h1 Войти в магазин
                 form(action="/auth/login" method='POST')
                     .input-field
@@ -22,18 +24,21 @@ block content
                         input#password.validate(type="password" name='password' required)
                         label(for="password") Пароль
                         span.helper-text(data-error="Введите пароль" )
+                    input(type="hidden" name="_csrf" value=csrf)
                     button.btn.btn-primary(type="submit") Войти
             #register.col.s6.offset-s3
+                if registerError
+                    p.alert!= registerError
                 h1 Создать аккаунт
                 form(action="/auth/register" method='POST')
                     .input-field
-                            input#remail.validate(type="email" name='email' required)
-                            label(for="remail") Email
-                            span.helper-text(data-error="Введите название" )
+                        input#remail.validate(type="email" name='email' required)
+                        label(for="remail") Email
+                        span.helper-text(data-error="Введите название" )
                     .input-field
-                            input#name.validate(type="text" name='name' required)
-                            label(for="name") Ваше Имя
-                            span.helper-text(data-error="Введите Имя" )
+                        input#name.validate(type="text" name='name' required)
+                        label(for="name") Ваше Имя
+                        span.helper-text(data-error="Введите Имя" )
                     .input-field
                         input#rpassword.validate(type="password" name='password' required)
                         label(for="rpassword") Пароль
@@ -42,6 +47,7 @@ block content
                         input#confirm.validate(type="password" name='confirm' required)
                         label(for="confirm") Введите пароль ещё раз
                         span.helper-text(data-error="Введите пароль" )
+                    input(type="hidden" name="_csrf" value=csrf)
                     button.btn.btn-primary(type="submit") Зарегистрироваться
 
 
