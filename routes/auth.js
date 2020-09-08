@@ -1,10 +1,12 @@
 const {Router} = require('express')
 const bcrypt = require('bcryptjs')
+const {validationResult} = require('express-validator/check')
 const sgMail = require('@sendgrid/mail');
 const User = require('../models/user')
 const keys = require('../keys')
 const regEmail = require('../emails/registration')
 const router = Router()
+const {registersValidators} = require('../utils/validators')
 
 const nodemailer = require('nodemailer');
 const sgTransport = require('nodemailer-sendgrid-transport');
@@ -65,12 +67,17 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', registersValidators, async (req, res) => {
 
     try {
-        const {email, password, repeat, name} = req.body
+        const {email, password, confirm, name} = req.body
 
         const candidate = await User.findOne({email})
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            req.flash('registerError', errors.array()[0].msg)
+            return res.status(422).redirect('/auth/login#register')
+        }
 
         if (candidate) {
             req.flash('registerError', 'Пользователь с таким email уже существует')
