@@ -4,20 +4,22 @@ block header
 
 block content
     h1 Добавить новый курс
-
-    form(action="/add" method='POST')
+    if error
+        p.alert!= error
+    form(action="/add" method='POST' novalidate)
         .input-field
-            input#title.validate(type="text" name='title' required)
+            input#title.validate(type="text" name='title' value!=data ? data.title : '' required)
             label(for="title") Название курса
             span.helper-text(data-error="Введите название" )
         .input-field
-            input#price.validate(type="number" name='price' min="1" required)
+            input#price.validate(type="number" name='price' min="1" value!=data ? data.price : '' required)
             label(for="price") Цена курса
             span.helper-text(data-error="Введите цену" )
         .input-field
-            input#img.validate(type="text" name='img' required)
+            input#img.validate(type="text" name='img' value!=data ? data.img : '' required)
             label(for="img") URL Картинки
             span.helper-text(data-error="Введите URL картинки")
+        input(type="hidden" name="_csrf" value=csrf)
         button.btn.btn-primary Добавить курс
 
 block footer

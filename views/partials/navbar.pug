@@ -6,9 +6,16 @@ nav
                 a(href="/") Главная
             li(class='list__class ' + (isCourses ? ' active ' : ''))
                 a(href="/courses") Курсы
-            li(class='list__class ' + (isAdd ? ' active ' : ''))
-                a(href="/add") Добавить курс
-            li(class='list__class ' + (isCard ? ' active ' : ''))
-                a(href="/card") Корзина
-            li(class='list__class ' + (isOrders ? ' active ' : ''))
-                a(href="/orders") Заказы
+            if isAuth
+                li(class='list__class ' + (isAdd ? ' active ' : ''))
+                    a(href="/add") Добавить курс
+                li(class='list__class ' + (isProfile ? ' active ' : ''))
+                    a(href="/profile") Профиль
+                li(class='list__class ' + (isCard ? ' active ' : ''))
+                    a(href="/card") Корзина
+                li(class='list__class ' + (isOrders ? ' active ' : ''))
+                    a(href="/orders") Заказы
+                li: a(href='auth/logout') Выйти
+            else
+                li(class='list__class ' + (isLogin ? ' active ' : ''))
+                    a(href="/auth/login#login") Войти

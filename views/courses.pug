@@ -8,10 +8,7 @@ block content
     .row
         if courses.length
             each course in courses
-                // -
-                //     course = JSON.parse(course)
-                .col.s6.offsets-3
-                    .card
+                .col.s6.offsets-3: .card
                         .card-image
                             img(src=course.img)
                         .card-content
@@ -19,10 +16,12 @@ block content
                             p.price!=course.price
                         .card-action.actions
                             a(href=`/courses/${course.id}` target="_blank") Открыть курс
-                            a(href=`/courses/${course.id}/edit?allow=true` target="_blank") Редактировать
-                            form(action='/card/add' method='POST')
-                                input(type="hidden" name='id' value=course.id)
-                                button.btn.btn-primary(type="submit") Купить
+                            if isAuth
+                                a(href=`/courses/${course.id}/edit?allow=true` target="_blank") Редактировать
+                                form(action='/card/add' method='POST')
+                                    input(type="hidden" name='id' value=course.id)
+                                    input(type="hidden" name="_csrf" value=csrf)
+                                    button.btn.btn-primary(type="submit") Купить
 
         else
             p Курсов нет
