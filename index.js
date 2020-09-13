@@ -7,16 +7,17 @@ const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
-
+const errorHandler = require('./middleware/error')
 const keys = require('./keys')
-
-
 const homeRoutes = require('./routes/home')
+
+
 const addRoutes = require('./routes/add')
 const coursesRoutes = require('./routes/course')
 const cardRoutes = require('./routes/card')
 const ordersRoutes = require('./routes/orders')
 const authRoutes = require('./routes/auth')
+const profileRoutes = require('./routes/profile')
 
 
 
@@ -50,6 +51,9 @@ app.use('/courses', coursesRoutes)
 app.use('/card', cardRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
+app.use('/profile', profileRoutes)
+
+app.use(errorHandler)
 
 
 const PORT = process.env.PORT || 3000

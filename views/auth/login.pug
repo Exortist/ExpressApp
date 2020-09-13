@@ -30,7 +30,7 @@ block content
                 if registerError
                     p.alert!= registerError
                 h1 Создать аккаунт
-                form(action="/auth/register" method='POST' novalidate)
+                form(action="/auth/register" method='POST')
                     .input-field
                         input#remail.validate(type="email" name='email' required)
                         label(for="remail") Email
