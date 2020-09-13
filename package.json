@@ -20,6 +20,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "helmet": "^4.1.1",
+    "heroku": "^7.42.13",
+    "heroku-cli": "^7.0.9",
     "mongoose": "^5.9.27",
     "nodemailer": "^6.4.11",
     "nodemailer-sendgrid-transport": "^0.2.0",
